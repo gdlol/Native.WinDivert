@@ -61,10 +61,9 @@ archive.ExtractToDirectory(projectPath);
 string binaryPath = new DirectoryInfo(projectPath).EnumerateDirectories().Single().FullName;
 string version = File.ReadAllText(Path.Combine(binaryPath, "VERSION")).Trim();
 
-var packageBuilder = new PackageBuilder();
-packageBuilder.Populate(new ManifestMetadata
+var packageBuilder = new PackageBuilder
 {
-    Authors = new[] { userName },
+    Authors = { userName },
     Version = new NuGetVersion(version),
     Id = packageName,
     Description = "WinDivert binary files.",
@@ -74,8 +73,8 @@ packageBuilder.Populate(new ManifestMetadata
     {
         Url = repositoryUrl
     },
-    Tags = "WinDivert"
-});
+    Tags = { "WinDivert" }
+};
 packageBuilder.PopulateFiles(
     new FileInfo(filePath).Directory!.FullName,
     new[]

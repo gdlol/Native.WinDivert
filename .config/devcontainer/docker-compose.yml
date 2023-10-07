@@ -1,0 +1,12 @@
+services:
+  devcontainer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    init: true
+    volumes:
+      - workspace:/workspace
+      - ../..:/workspace/project
+      - ../workspace/Workspace.props:/workspace/Workspace.props
+volumes:
+  workspace:

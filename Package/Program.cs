@@ -26,7 +26,7 @@ static string GetOutput(string commandName, params string[] args)
     return result.StdOut;
 }
 
-const string url = "https://reqrypt.org/download/WinDivert-2.2.1-A.zip";
+const string url = "https://reqrypt.org/download/WinDivert-2.2.2-A.zip";
 const string packageName = "Native.WinDivert";
 
 // Get metadata from Git.
@@ -67,6 +67,7 @@ var packageBuilder = new PackageBuilder
     Version = new NuGetVersion(version),
     Id = packageName,
     Description = "WinDivert binary files.",
+    Readme = "ReadMe.md",
     LicenseMetadata = new LicenseMetadata(LicenseType.File, "LICENSE", null, null, LicenseMetadata.EmptyVersion),
     RequireLicenseAcceptance = true,
     Repository = repositoryUrl is null ? null : new RepositoryMetadata
@@ -79,6 +80,11 @@ packageBuilder.PopulateFiles(
     new FileInfo(filePath).Directory!.FullName,
     new[]
     {
+        new ManifestFile
+        {
+            Source = Path.Combine(basePath, "ReadMe.md"),
+            Target = "ReadMe.md"
+        },
         new ManifestFile
         {
             Source = Path.Combine(binaryPath, "LICENSE"),

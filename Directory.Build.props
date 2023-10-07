@@ -1,0 +1,7 @@
+<Project>
+  <PropertyGroup>
+    <WorkspacePropsPath>$([MSBuild]::GetPathOfFileAbove('Workspace.props'))</WorkspacePropsPath>
+  </PropertyGroup>
+
+  <Import Project="$(WorkspacePropsPath)" Condition="Exists($(WorkspacePropsPath))" />
+</Project>

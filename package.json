@@ -4,6 +4,7 @@
   "scripts": {
     "cake": "dotnet run --project Automation --target",
     "format": "pnpm run cake Format",
+    "git-push": "pnpm run cake GitPush",
     "lint": "pnpm run cake Lint",
     "restore": "pnpm run cake Restore"
   },
